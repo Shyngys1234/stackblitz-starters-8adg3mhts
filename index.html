@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Тихий холм — ночь 31 октября</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ruslan+Display&family=Spectral:ital,wght@0,300;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#1B0B2E; --bone:#EFE6D2; --flame:#FFB347; --veil:12,4,22; --line:#5B3A7A;
+  color-scheme:dark; box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#1B0B2E;--bone:#EFE6D2;--flame:#FFB347;--veil:12,4,22;--line:#5B3A7A}}
+:root[data-theme="dark"]{--bg:#1B0B2E;--bone:#EFE6D2;--flame:#FFB347;--veil:12,4,22;--line:#5B3A7A}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--bone);font-family:Spectral,Georgia,"Times New Roman",serif;font-weight:300;font-size:19px;line-height:1.55;overflow-x:hidden}
+main{position:relative;max-width:1100px;margin:0 auto;padding:0 clamp(20px,5vw,60px)}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--flame);outline-offset:3px}
+
+.hero{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:40px 0 70px}
+.when{font-style:italic;font-size:20px;margin:0 0 14px}
+h1{font-family:"Ruslan Display",Georgia,serif;font-weight:400;margin:0;font-size:clamp(76px,19vw,260px);line-height:.88;letter-spacing:-.01em}
+.lede{max-width:30ch;font-size:clamp(21px,2.6vw,30px);line-height:1.3;margin:28px 0 0}
+.count{margin-top:22px;font-size:17px;color:var(--flame);font-weight:500}
+
+h2{font-family:"Ruslan Display",Georgia,serif;font-weight:400;font-size:clamp(38px,6vw,76px);line-height:1;margin:0 0 40px}
+.night{padding:70px 0}
+.step{display:grid;grid-template-columns:110px 1fr;gap:0 28px;position:relative;padding-bottom:38px}
+.step::before{content:"";position:absolute;left:123px;top:14px;bottom:-14px;width:1.5px;background:var(--line)}
+.step:last-child::before{display:none}
+.step::after{content:"";position:absolute;left:118px;top:12px;width:12px;height:12px;border-radius:50%;background:var(--flame)}
+.step time{font-family:"Ruslan Display",Georgia,serif;font-size:34px;line-height:1.1;text-align:right;padding-right:8px;width:104px}
+.step div{padding-left:30px}
+.step h3{margin:0 0 4px;font-size:26px;font-weight:500;line-height:1.2}
+.step p{margin:0;max-width:44ch}
+
+.seat{padding:50px 0 120px}
+.seat p{max-width:40ch;margin:0 0 24px}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+input{font:inherit;color:var(--bone);background:transparent;border:0;border-bottom:2px solid var(--bone);padding:10px 2px;min-width:240px;flex:1;max-width:360px}
+input::placeholder{color:#b9aacb}
+button.go{font:inherit;font-weight:500;color:var(--bg);background:var(--flame);border:0;border-radius:999px;padding:12px 28px;cursor:pointer}
+#msg{margin-top:18px;min-height:1.6em;color:var(--flame)}
+
+#veil{position:fixed;inset:0;z-index:5;pointer-events:none;
+  background:
+   radial-gradient(circle calc(var(--r) * .9) at var(--x) var(--y), rgba(255,170,60,.2), transparent 75%),
+   radial-gradient(circle var(--r) at var(--x) var(--y), transparent 0, transparent 32%, rgba(var(--veil),.95) 100%)}
+html.lit #veil,html.lit .eyes,html.lit .hint{display:none}
+.eyes{position:absolute;z-index:6;width:38px;height:12px;pointer-events:none;transition:opacity .3s;
+  background:radial-gradient(ellipse 5px 4px at 20% 50%,var(--flame) 70%,transparent 75%),radial-gradient(ellipse 5px 4px at 80% 50%,var(--flame) 70%,transparent 75%);
+  filter:drop-shadow(0 0 6px var(--flame));animation:blink 6s infinite}
+.eyes.gone{opacity:0}
+@keyframes blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.08)}}
+.hint{position:absolute;z-index:6;left:clamp(20px,5vw,60px);top:34px;font-style:italic;color:var(--flame);font-size:17px;max-width:26ch;pointer-events:none}
+#lamp{position:fixed;z-index:10;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));font:inherit;font-size:16px;color:var(--bone);background:var(--bg);border:1.5px solid var(--bone);border-radius:999px;padding:9px 18px;cursor:pointer}
+
+@media (max-width:600px){
+  .step{grid-template-columns:78px 1fr}
+  .step::before{left:91px}.step::after{left:86px}
+  .step time{font-size:26px;width:72px}
+  .step div{padding-left:24px}
+}
+@media (prefers-reduced-motion:reduce){.eyes{animation:none}}
+</style>
+</head>
+<body>
+<div id="veil" aria-hidden="true"></div>
+<p class="hint" id="hint">Проведите по странице фонарём. Кто-то уже смотрит.</p>
+<main>
+  <section class="hero">
+    <p class="when">Дом на холме, 31 октября, 21:00</p>
+    <h1>Тихий холм</h1>
+    <p class="lede">Одна ночь, двенадцать комнат и ни одной розетки. Гостей встречают свечами.</p>
+    <p class="count" id="count"></p>
+  </section>
+
+  <section class="night">
+    <h2>Ход ночи</h2>
+    <div class="step"><time>21:00</time><div><h3>Вход через сад</h3><p>Фонарь выдают у калитки. Свой лучше оставить дома.</p></div></div>
+    <div class="step"><time>22:30</time><div><h3>Ужин при свечах</h3><p>Один длинный стол на двадцать четыре места. Меню мы не объявляем.</p></div></div>
+    <div class="step"><time>00:00</time><div><h3>Часы останавливаются</h3><p>Ровно на семь минут. Что происходит в это время, рассказывают только те, кто был.</p></div></div>
+    <div class="step"><time>03:00</time><div><h3>Кто остался</h3><p>Тем, кто досидел до конца, подают горячий шоколад.</p></div></div>
+  </section>
+
+  <section class="seat">
+    <h2>Место за столом</h2>
+    <p>Свободных мест: <b id="left">9</b> из 24. Назовите имя, и мы поставим прибор.</p>
+    <div class="row">
+      <input id="who" type="text" placeholder="Ваше имя" aria-label="Ваше имя" autocomplete="given-name">
+      <button class="go" id="book">Занять место</button>
+    </div>
+    <div id="msg" role="status"></div>
+  </section>
+</main>
+<button id="lamp" aria-pressed="false">Включить свет</button>
+<script>
+(function(){
+  var root=document.documentElement,main=document.querySelector('main'),hint=document.getElementById('hint');
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* eyes in the dark */
+  var spots=[[8,22],[88,38],[14,58],[76,72],[30,86],[92,92],[52,47]],eyes=[];
+  spots.forEach(function(p){
+    var e=document.createElement('span');e.className='eyes';e.setAttribute('aria-hidden','true');
+    e.style.left=p[0]+'%';e.style.top=p[1]+'%';e.style.animationDelay=(Math.random()*5).toFixed(1)+'s';
+    document.body.appendChild(e);eyes.push(e);
+  });
+  function place(){var h=document.body.scrollHeight;eyes.forEach(function(e,i){e.style.top=(spots[i][1]/100*h)+'px'})}
+  addEventListener('load',place);addEventListener('resize',place);place();
+
+  /* lantern */
+  var tx=innerWidth/2,ty=innerHeight*.45,x=tx,y=ty,used=false,t0=performance.now();
+  function R(){return Math.max(150,Math.min(260,innerWidth*.28))}
+  function move(a,b){used=true;tx=a;ty=b}
+  addEventListener('pointermove',function(e){move(e.clientX,e.clientY)});
+  addEventListener('touchmove',function(e){var t=e.touches[0];if(t)move(t.clientX,t.clientY)},{passive:true});
+  addEventListener('touchstart',function(e){var t=e.touches[0];if(t)move(t.clientX,t.clientY)},{passive:true});
+  function frame(now){
+    if(!used&&!reduce){var k=(now-t0)/1000;tx=innerWidth*(.5+.28*Math.sin(k*.7));ty=innerHeight*(.45+.22*Math.sin(k*.9+1))}
+    var f=reduce?1:.18;x+=(tx-x)*f;y+=(ty-y)*f;
+    var r=R();root.style.setProperty('--x',x+'px');root.style.setProperty('--y',y+'px');root.style.setProperty('--r',r+'px');
+    if(!root.classList.contains('lit')){
+      eyes.forEach(function(e){var b=e.getBoundingClientRect(),d=Math.hypot(x-(b.left+b.width/2),y-(b.top+b.height/2));e.classList.toggle('gone',d<r*.8)});
+      if(used&&hint)hint.style.opacity=Math.max(0,1-(scrollY/200))*(1)
+    }
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+
+  /* lights toggle */
+  var lamp=document.getElementById('lamp');
+  lamp.addEventListener('click',function(){
+    var on=root.classList.toggle('lit');
+    lamp.textContent=on?'Выключить свет':'Включить свет';lamp.setAttribute('aria-pressed',on);
+  });
+
+  /* countdown */
+  var target=new Date(2026,9,31,21,0,0),c=document.getElementById('count');
+  function tick(){
+    var ms=target-new Date();
+    if(ms<=0){c.textContent='Калитка открыта. Дом ждёт.';return}
+    var m=Math.floor(ms/60000),d=Math.floor(m/1440),h=Math.floor(m%1440/60);
+    c.textContent='До открытия калитки: '+d+' дн. '+h+' ч. '+(m%60)+' мин.';
+  }
+  tick();setInterval(tick,30000);
+
+  /* booking */
+  var left=9,msg=document.getElementById('msg'),who=document.getElementById('who'),out=document.getElementById('left');
+  function book(){
+    var n=who.value.trim();
+    if(!n){msg.textContent='Укажите имя, чтобы мы поставили прибор.';who.focus();return}
+    if(left<=0){msg.textContent='Мест не осталось. Приходите в следующем году.';return}
+    left--;out.textContent=left;
+    msg.textContent='Место записано на имя «'+n+'». Калитка открыта с 21:00.';who.value='';
+  }
+  document.getElementById('book').addEventListener('click',book);
+  who.addEventListener('keydown',function(e){if(e.key==='Enter')book()});
+})();
+</script>
+</body>
+</html>
